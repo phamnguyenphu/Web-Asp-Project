@@ -25,6 +25,29 @@ namespace WebAspProject
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Assets/css").Include(
+                       "~/Assets/css/bootstrap.min.css",
+                       "~/Assets/css/animate.css",
+                       "~/Assets/css/owl.carousel.min.css",
+                       "~/Assets/css/all.css",
+                       "~/Assets/css/flaticon.css",
+                       "~/Assets/css/themify-icons.css",
+                       "~/Assets/css/magnific-popup.css",
+                       "~/Assets/css/slick.css",
+                       "~/Assets/css/style.css"));
+            bundles.Add(new ScriptBundle("~/Assets/js").Include(
+                       "~/Assets/js/jquery.magnific-popup.js",
+                       "~/Assets/js/swiper.min.js",
+                       "~/Assets/js/mixitup.min.js",
+                       "~/Assets/js/owl.carousel.min.js",
+                       "~/Assets/js/slick.min.js",
+                       "~/Assets/js/jquery.counterup.min.js",
+                       "~/Assets/js/waypoints.min.js",
+                       "~/Assets/js/contact.js",
+                       "~/Assets/js/jquery.ajaxchimp.min.js",
+                       "~/Assets/js/jquery.form.js",
+                       "~/Assets/js/mail-script.js",
+                       "~/Assets/js/custom.js"));
         }
     }
 }
