@@ -17,5 +17,11 @@ namespace WebAspProject.Controllers
         {
             return View();
         }
+
+        public ActionResult compareList()
+        {
+            return View();
+        }
+
     }
 }

@@ -34,6 +34,14 @@ namespace WebAspProject
                        "~/Assets/css/themify-icons.css",
                        "~/Assets/css/magnific-popup.css",
                        "~/Assets/css/slick.css",
+                       "~/Assets/css/price_rangs.css",
+                       "~/Assets/css/nice-select.css",
+                       "~/Assets/css/font-awesome.min.css",
+                       "~/Assets/css/lightslider.min.css",
+                       "~/Assets/css/products.css",
+                       "~/Assets/css/swiper.min.css",
+                       "~/Assets/css/slick.min.css",
+                       "~/Assets/css/slick-theme.min.css",
                        "~/Assets/css/style.css"));
             bundles.Add(new ScriptBundle("~/Assets/js").Include(
                        "~/Assets/js/jquery.magnific-popup.js",
@@ -47,6 +55,10 @@ namespace WebAspProject
                        "~/Assets/js/jquery.ajaxchimp.min.js",
                        "~/Assets/js/jquery.form.js",
                        "~/Assets/js/mail-script.js",
+                       "~/Assets/js/price_rangs.js",
+                       "~/Assets/js/stellar.js",
+                       "~/Assets/js/jquery-1.12.1.min.js",
+                       "~/Assets/js/jquery.validate.min.js",
                        "~/Assets/js/custom.js"));
         }
     }

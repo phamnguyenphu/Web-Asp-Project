@@ -119,7 +119,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -130,6 +133,7 @@
     <Content Include="Assets\css\all.css" />
     <Content Include="Assets\css\animate.css" />
     <Content Include="Assets\css\aos.css" />
+    <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\flaticon.css" />
     <Content Include="Assets\css\font-awesome.min.css" />
     <Content Include="Assets\css\lightslider.min.css" />
@@ -312,6 +316,10 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shop\shopCategory.cshtml" />
     <Content Include="Views\Shop\productDetails.cshtml" />
+    <Content Include="Views\Pages\Login.cshtml" />
+    <Content Include="Views\Shop\compareList.cshtml" />
+    <Content Include="Views\Blog\blog.cshtml" />
+    <Content Include="Views\Contact\contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
