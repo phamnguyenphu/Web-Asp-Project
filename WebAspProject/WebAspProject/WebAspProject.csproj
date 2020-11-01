@@ -141,7 +141,6 @@
     <Content Include="Assets\css\nice-select.css" />
     <Content Include="Assets\css\owl.carousel.min.css" />
     <Content Include="Assets\css\price_rangs.css" />
-    <Content Include="Assets\css\products.css" />
     <Content Include="Assets\css\slick-theme.min.css" />
     <Content Include="Assets\css\slick.css" />
     <Content Include="Assets\css\slick.min.css" />
@@ -207,7 +206,8 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Assets\css\style.map" />
+    <Content Include="package.json" />
+    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

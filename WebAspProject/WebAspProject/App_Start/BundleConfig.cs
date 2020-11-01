@@ -29,7 +29,6 @@ namespace WebAspProject
                        "~/Assets/css/bootstrap.min.css",
                        "~/Assets/css/animate.css",
                        "~/Assets/css/owl.carousel.min.css",
-                       "~/Assets/css/all.css",
                        "~/Assets/css/flaticon.css",
                        "~/Assets/css/themify-icons.css",
                        "~/Assets/css/magnific-popup.css",
@@ -38,11 +37,11 @@ namespace WebAspProject
                        "~/Assets/css/nice-select.css",
                        "~/Assets/css/font-awesome.min.css",
                        "~/Assets/css/lightslider.min.css",
-                       "~/Assets/css/products.css",
                        "~/Assets/css/swiper.min.css",
                        "~/Assets/css/slick.min.css",
                        "~/Assets/css/slick-theme.min.css",
-                       "~/Assets/css/style.css"));
+                       "~/Assets/css/style.css"
+                       ));
             bundles.Add(new ScriptBundle("~/Assets/js").Include(
                        "~/Assets/js/jquery.magnific-popup.js",
                        "~/Assets/js/swiper.min.js",

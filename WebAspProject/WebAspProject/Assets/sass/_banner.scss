@@ -2,7 +2,7 @@
 .banner_part{
     position: relative;
     background-color: #dde5e8;
-    @include background ('../img/banner_img.png');
+    @include background ('../img/b1.jpg');
     .single_banner_slider{
         .banner_text{
             display: table;
