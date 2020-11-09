@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CUAHANGOTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Username" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="Pass" Type="char" MaxLength="30" />
+          <Property Name="id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="idCategory" />
+          </Key>
+          <Property Name="idCategory" Type="int" Nullable="false" />
+          <Property Name="nameCategory" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer_info">
+          <Key>
+            <PropertyRef Name="idCustomer" />
+          </Key>
+          <Property Name="idCustomer" Type="int" Nullable="false" />
+          <Property Name="nameCustomer" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="birthCustomer" Type="date" />
+          <Property Name="sexCustomer" Type="nvarchar" MaxLength="5" />
+          <Property Name="phoneNumberCustomer" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="emailCustomer" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="addressCustomer" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="customerConsulting_info">
+          <Key>
+            <PropertyRef Name="idCustomer" />
+            <PropertyRef Name="idStaff" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idCustomer" Type="int" Nullable="false" />
+          <Property Name="idStaff" Type="int" Nullable="false" />
+          <Property Name="idProduct" Type="int" Nullable="false" />
+          <Property Name="textInfo" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idProduct" Type="int" Nullable="false" />
+          <Property Name="idCategoryProduct" Type="int" Nullable="false" />
+          <Property Name="nameProduct" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="priceProduct" Type="money" Nullable="false" />
+          <Property Name="modelProduct" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="timeProduction" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="originProduct" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="descriptionProduct" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="imageProduct" Type="image" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="seat" Type="int" Nullable="false" />
+          <Property Name="fuel" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff_info">
+          <Key>
+            <PropertyRef Name="idStaff" />
+          </Key>
+          <Property Name="idStaff" Type="int" Nullable="false" />
+          <Property Name="nameStaff" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="birthStaff" Type="date" />
+          <Property Name="sexStaff" Type="nvarchar" MaxLength="5" />
+          <Property Name="phoneNumberStaff" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="emailStaff" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="addressStaff" Type="nvarchar" MaxLength="100" />
+          <Property Name="positionStaff" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Account__id__1DE57479">
+          <End Role="Staff_info" Type="Self.Staff_info" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff_info">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__customerC__idCus__1920BF5C">
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="1" />
+          <End Role="customerConsulting_info" Type="Self.customerConsulting_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_info">
+              <PropertyRef Name="idCustomer" />
+            </Principal>
+            <Dependent Role="customerConsulting_info">
+              <PropertyRef Name="idCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__customerC__idPro__1B0907CE">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="customerConsulting_info" Type="Self.customerConsulting_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="idProduct" />
+            </Principal>
+            <Dependent Role="customerConsulting_info">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__customerC__idSta__1A14E395">
+          <End Role="Staff_info" Type="Self.Staff_info" Multiplicity="1" />
+          <End Role="customerConsulting_info" Type="Self.customerConsulting_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff_info">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="customerConsulting_info">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__idCate__1273C1CD">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="idCategory" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="idCategoryProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CUAHANGOTOModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_info" EntityType="Self.Customer_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customerConsulting_info" EntityType="Self.customerConsulting_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff_info" EntityType="Self.Staff_info" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Account__id__1DE57479" Association="Self.FK__Account__id__1DE57479">
+            <End Role="Staff_info" EntitySet="Staff_info" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK__customerC__idCus__1920BF5C" Association="Self.FK__customerC__idCus__1920BF5C">
+            <End Role="Customer_info" EntitySet="Customer_info" />
+            <End Role="customerConsulting_info" EntitySet="customerConsulting_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__customerC__idPro__1B0907CE" Association="Self.FK__customerC__idPro__1B0907CE">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="customerConsulting_info" EntitySet="customerConsulting_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__customerC__idSta__1A14E395" Association="Self.FK__customerC__idSta__1A14E395">
+            <End Role="Staff_info" EntitySet="Staff_info" />
+            <End Role="customerConsulting_info" EntitySet="customerConsulting_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__idCate__1273C1CD" Association="Self.FK__Products__idCate__1273C1CD">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CUAHANGOTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Staff_info" Relationship="Self.FK__Account__id__1DE57479" FromRole="Account" ToRole="Staff_info" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="idCategory" />
+          </Key>
+          <Property Name="idCategory" Type="Int32" Nullable="false" />
+          <Property Name="nameCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Products__idCate__1273C1CD" FromRole="Category" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Customer_info">
+          <Key>
+            <PropertyRef Name="idCustomer" />
+          </Key>
+          <Property Name="idCustomer" Type="Int32" Nullable="false" />
+          <Property Name="nameCustomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="birthCustomer" Type="DateTime" Precision="0" />
+          <Property Name="sexCustomer" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNumberCustomer" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="emailCustomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="addressCustomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="customerConsulting_info" Relationship="Self.FK__customerC__idCus__1920BF5C" FromRole="Customer_info" ToRole="customerConsulting_info" />
+        </EntityType>
+        <EntityType Name="customerConsulting_info">
+          <Key>
+            <PropertyRef Name="idCustomer" />
+            <PropertyRef Name="idStaff" />
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idCustomer" Type="Int32" Nullable="false" />
+          <Property Name="idStaff" Type="Int32" Nullable="false" />
+          <Property Name="idProduct" Type="Int32" Nullable="false" />
+          <Property Name="textInfo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer_info" Relationship="Self.FK__customerC__idCus__1920BF5C" FromRole="customerConsulting_info" ToRole="Customer_info" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__customerC__idPro__1B0907CE" FromRole="customerConsulting_info" ToRole="Products" />
+          <NavigationProperty Name="Staff_info" Relationship="Self.FK__customerC__idSta__1A14E395" FromRole="customerConsulting_info" ToRole="Staff_info" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="idProduct" />
+          </Key>
+          <Property Name="idProduct" Type="Int32" Nullable="false" />
+          <Property Name="idCategoryProduct" Type="Int32" Nullable="false" />
+          <Property Name="nameProduct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="priceProduct" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="modelProduct" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="timeProduction" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="originProduct" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descriptionProduct" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="imageProduct" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="seat" Type="Int32" Nullable="false" />
+          <Property Name="fuel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Products__idCate__1273C1CD" FromRole="Products" ToRole="Category" />
+          <NavigationProperty Name="customerConsulting_info" Relationship="Self.FK__customerC__idPro__1B0907CE" FromRole="Products" ToRole="customerConsulting_info" />
+        </EntityType>
+        <EntityType Name="Staff_info">
+          <Key>
+            <PropertyRef Name="idStaff" />
+          </Key>
+          <Property Name="idStaff" Type="Int32" Nullable="false" />
+          <Property Name="nameStaff" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="birthStaff" Type="DateTime" Precision="0" />
+          <Property Name="sexStaff" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNumberStaff" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="emailStaff" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="addressStaff" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="positionStaff" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__id__1DE57479" FromRole="Staff_info" ToRole="Account" />
+          <NavigationProperty Name="customerConsulting_info" Relationship="Self.FK__customerC__idSta__1A14E395" FromRole="Staff_info" ToRole="customerConsulting_info" />
+        </EntityType>
+        <Association Name="FK__Account__id__1DE57479">
+          <End Role="Staff_info" Type="Self.Staff_info" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff_info">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__idCate__1273C1CD">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="idCategory" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="idCategoryProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__customerC__idCus__1920BF5C">
+          <End Role="Customer_info" Type="Self.Customer_info" Multiplicity="1" />
+          <End Role="customerConsulting_info" Type="Self.customerConsulting_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer_info">
+              <PropertyRef Name="idCustomer" />
+            </Principal>
+            <Dependent Role="customerConsulting_info">
+              <PropertyRef Name="idCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__customerC__idPro__1B0907CE">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="customerConsulting_info" Type="Self.customerConsulting_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="idProduct" />
+            </Principal>
+            <Dependent Role="customerConsulting_info">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__customerC__idSta__1A14E395">
+          <End Role="Staff_info" Type="Self.Staff_info" Multiplicity="1" />
+          <End Role="customerConsulting_info" Type="Self.customerConsulting_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff_info">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="customerConsulting_info">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CUAHANGOTOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Customer_info" EntityType="Self.Customer_info" />
+          <EntitySet Name="customerConsulting_info" EntityType="Self.customerConsulting_info" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Staff_info" EntityType="Self.Staff_info" />
+          <AssociationSet Name="FK__Account__id__1DE57479" Association="Self.FK__Account__id__1DE57479">
+            <End Role="Staff_info" EntitySet="Staff_info" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__idCate__1273C1CD" Association="Self.FK__Products__idCate__1273C1CD">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__customerC__idCus__1920BF5C" Association="Self.FK__customerC__idCus__1920BF5C">
+            <End Role="Customer_info" EntitySet="Customer_info" />
+            <End Role="customerConsulting_info" EntitySet="customerConsulting_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__customerC__idPro__1B0907CE" Association="Self.FK__customerC__idPro__1B0907CE">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="customerConsulting_info" EntitySet="customerConsulting_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__customerC__idSta__1A14E395" Association="Self.FK__customerC__idSta__1A14E395">
+            <End Role="Staff_info" EntitySet="Staff_info" />
+            <End Role="customerConsulting_info" EntitySet="customerConsulting_info" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CUAHANGOTOModelStoreContainer" CdmEntityContainer="CUAHANGOTOEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="CUAHANGOTOModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="CUAHANGOTOModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+                <ScalarProperty Name="nameCategory" ColumnName="nameCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_info">
+            <EntityTypeMapping TypeName="CUAHANGOTOModel.Customer_info">
+              <MappingFragment StoreEntitySet="Customer_info">
+                <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+                <ScalarProperty Name="nameCustomer" ColumnName="nameCustomer" />
+                <ScalarProperty Name="birthCustomer" ColumnName="birthCustomer" />
+                <ScalarProperty Name="sexCustomer" ColumnName="sexCustomer" />
+                <ScalarProperty Name="phoneNumberCustomer" ColumnName="phoneNumberCustomer" />
+                <ScalarProperty Name="emailCustomer" ColumnName="emailCustomer" />
+                <ScalarProperty Name="addressCustomer" ColumnName="addressCustomer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customerConsulting_info">
+            <EntityTypeMapping TypeName="CUAHANGOTOModel.customerConsulting_info">
+              <MappingFragment StoreEntitySet="customerConsulting_info">
+                <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="textInfo" ColumnName="textInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="CUAHANGOTOModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="idCategoryProduct" ColumnName="idCategoryProduct" />
+                <ScalarProperty Name="nameProduct" ColumnName="nameProduct" />
+                <ScalarProperty Name="priceProduct" ColumnName="priceProduct" />
+                <ScalarProperty Name="modelProduct" ColumnName="modelProduct" />
+                <ScalarProperty Name="timeProduction" ColumnName="timeProduction" />
+                <ScalarProperty Name="originProduct" ColumnName="originProduct" />
+                <ScalarProperty Name="descriptionProduct" ColumnName="descriptionProduct" />
+                <ScalarProperty Name="imageProduct" ColumnName="imageProduct" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="seat" ColumnName="seat" />
+                <ScalarProperty Name="fuel" ColumnName="fuel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff_info">
+            <EntityTypeMapping TypeName="CUAHANGOTOModel.Staff_info">
+              <MappingFragment StoreEntitySet="Staff_info">
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="nameStaff" ColumnName="nameStaff" />
+                <ScalarProperty Name="birthStaff" ColumnName="birthStaff" />
+                <ScalarProperty Name="sexStaff" ColumnName="sexStaff" />
+                <ScalarProperty Name="phoneNumberStaff" ColumnName="phoneNumberStaff" />
+                <ScalarProperty Name="emailStaff" ColumnName="emailStaff" />
+                <ScalarProperty Name="addressStaff" ColumnName="addressStaff" />
+                <ScalarProperty Name="positionStaff" ColumnName="positionStaff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

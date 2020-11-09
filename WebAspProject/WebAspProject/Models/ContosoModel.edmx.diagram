@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="875d91bf9241476383962f766dc7d206" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="CUAHANGOTOModel.Account" Width="1.5" PointX="4.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CUAHANGOTOModel.Category" Width="1.5" PointX="1.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CUAHANGOTOModel.Customer_info" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CUAHANGOTOModel.customerConsulting_info" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CUAHANGOTOModel.Product" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CUAHANGOTOModel.Staff_info" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="CUAHANGOTOModel.FK__Account__id__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="CUAHANGOTOModel.FK__Products__idCate__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="CUAHANGOTOModel.FK__customerC__idCus__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="CUAHANGOTOModel.FK__customerC__idPro__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="CUAHANGOTOModel.FK__customerC__idSta__1A14E395" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
